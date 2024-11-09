@@ -4,7 +4,10 @@
     {
       "src": "FriendChat/wsgi.py",
       "use": "@vercel/python",
-      "config": {"maxLambdaSize": "15mb", "runtime": "python3.x"}
+      "config": {
+        "maxLambdaSize": "15mb",
+        "runtime": "python3.x"
+      }
     },
     {
       "src": "build_files.sh",
@@ -16,12 +19,12 @@
   ],
   "routes": [
     {
-      "src": "/(.*)",
-      "dest": "FriendChat/wsgi.py"
+      "src": "/static/(.*)",
+      "dest": "/staticfiles/$1"
     },
     {
-      "src": "/static/(.*)",
-      "dest": "/static/$1"
-    }
+      "src": "/(.*)",
+      "dest": "FriendChat/wsgi.py"
+    } 
   ]
 }
